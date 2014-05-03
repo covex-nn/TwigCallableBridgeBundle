@@ -25,19 +25,12 @@ class Configuration implements ConfigurationInterface
     $treeBuilder = new TreeBuilder();
     $rootNode = $treeBuilder->root('covex_twig_callback_bridge');
 
-    $functionValidator = function ($value) {
-      return !is_callable($value) && !($value instanceof \Twig_SimpleFunction);
+    $callableValidator = function ($value) {
+      return !is_callable($value);
     };
-    $filterValidator = function ($value) {
-      return !is_callable($value) && !($value instanceof \Twig_SimpleFilter);
-    };
-    $testValidator = function ($value) {
-      return !is_callable($value) && !($value instanceof \Twig_SimpleTest);
-    };
-
-    $this->createExtensionNode($rootNode, 'functions', $functionValidator);
-    $this->createExtensionNode($rootNode, 'filters', $filterValidator);
-    $this->createExtensionNode($rootNode, 'tests', $testValidator);
+    $this->createExtensionNode($rootNode, 'functions', $callableValidator);
+    $this->createExtensionNode($rootNode, 'filters', $callableValidator);
+    $this->createExtensionNode($rootNode, 'tests', $callableValidator);
 
     return $treeBuilder;
   }
