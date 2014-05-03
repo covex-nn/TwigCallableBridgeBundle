@@ -1,0 +1,5 @@
+services:
+    covex.twig_callback_bridge.twig_extension:
+        class: Covex\TwigCallbackBridgeBundle\Twig\Extension
+        tags:
+            - { name: twig.extension }
