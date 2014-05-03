@@ -6,17 +6,15 @@ php:
    - 5.5
 
 env:
-#   global:
-#      - secure: ""
+   global:
+      - secure: "A5lCh2SDM2GvYXx8swmLEuVugaLLLMuWedFeZSF5DBTbVN9ID+4P4kkw5aFxT68VFhGrUEtRD6YHkMXLPaMPXvsD1np4Eln3mIjoOzexcYuM7Fo/Lmv+R/SbdIHeIP9ees2fS8oPDw88Kq26pj0GAT7iLGosDNQnbfZAi9ROvmM="
    matrix:
       - SYMFONY_VERSION=2.3.*
       - SYMFONY_VERSION=2.4.*
 
 before_script:
-   - gem install sass -v 3.2.9
-   - gem install compass -v 0.12.2
    - composer self-update
-#   - sh -c "if $TRAVIS_SECURE_ENV_VARS; then composer config --global github-oauth.github.com $GITHUB_OAUTH_TOKEN; fi"
+   - sh -c "if $TRAVIS_SECURE_ENV_VARS; then composer config --global github-oauth.github.com $GITHUB_OAUTH_TOKEN; fi"
    - composer require --dev symfony/symfony:${SYMFONY_VERSION}
 
 script:
