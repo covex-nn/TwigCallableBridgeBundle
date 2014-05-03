@@ -9,6 +9,7 @@
 namespace Covex\TwigCallbackBridgeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Twig Callback Bridge Bundle
@@ -16,4 +17,14 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 class CovexTwigCallbackBridgeBundle extends Bundle
 {
 
+
+  /**
+   * {@inheritdoc}
+   */
+  public function build(ContainerBuilder $container)
+  {
+    $container->addCompilerPass(
+      new DependencyInjection\Compiler\CallbackPass()
+    );
+  }
 }

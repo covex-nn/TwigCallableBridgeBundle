@@ -8,11 +8,25 @@
  */
 namespace Covex\TwigCallbackBridgeBundle\Twig;
 
+use Covex\TwigCallbackBridgeBundle\Callback\CallbackInterface;
+
 /**
  * Twig callback bridge extension
  */
 class Extension extends \Twig_Extension
 {
+
+  /**
+   * Add callback
+   *
+   * @param CallbackInterface $callback Callback
+   *
+   * @return null
+   */
+  public function addCallback(CallbackInterface $callback)
+  {
+
+  }
 
   /**
    * {@inheritdoc}
