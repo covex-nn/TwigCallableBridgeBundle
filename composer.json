@@ -1,6 +1,6 @@
 {
     "name" : "covex-nn/twig-callable-bridge-bundle",
-    "description" : "Extends twig from Symfony2 application config",
+    "description" : "Provides a simple interface to extend Twig with PHP functions",
     "type" : "symfony-bundle",
     "license" : "MIT",
     "authors" : [
