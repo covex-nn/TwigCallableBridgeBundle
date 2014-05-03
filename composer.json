@@ -1,5 +1,5 @@
 {
-    "name" : "covex-nn/twig-callback-bridge-bundle",
+    "name" : "covex-nn/twig-callable-bridge-bundle",
     "description" : "Extends twig from Symfony2 application config",
     "type" : "symfony-bundle",
     "license" : "MIT",

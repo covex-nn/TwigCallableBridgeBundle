@@ -7,7 +7,7 @@ php:
 
 env:
    global:
-      - secure: "A5lCh2SDM2GvYXx8swmLEuVugaLLLMuWedFeZSF5DBTbVN9ID+4P4kkw5aFxT68VFhGrUEtRD6YHkMXLPaMPXvsD1np4Eln3mIjoOzexcYuM7Fo/Lmv+R/SbdIHeIP9ees2fS8oPDw88Kq26pj0GAT7iLGosDNQnbfZAi9ROvmM="
+      - secure: "jVYaIsj8hYixGPrYNWSjhkcvOMXXrC5lBznJrp5X2M4tT7kMCbmU7EmodjeeXEm0Or3DEinUHuk7YbAMtXZMYrtEwjJ2ORzuiYhFcDCPocbHKocSEue1tJ2MSD2cc+gT0p/ygBEBDwXPGp7lt9SuZCrNzDBYvRakOarLMwS8YtI="
    matrix:
       - SYMFONY_VERSION=2.3.*
       - SYMFONY_VERSION=2.4.*
