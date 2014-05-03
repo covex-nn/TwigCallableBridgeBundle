@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<!--
+{{ uppercase('qqq') }}
+{{ 'WoW'|lowercase }}
+{% if 1 is numeric %}yes{% else %}no{% endif %}
+
+-->
 <body>
 {{ file_get_contents(readme_md)|raw|markdown }}
 </body>

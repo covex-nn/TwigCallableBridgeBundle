@@ -33,3 +33,8 @@ twig:
 covex_twig_callable_bridge:
     functions:
         file_get_contents: file_get_contents
+        uppercase: strtoupper
+    filters:
+        lowercase: strtolower
+    tests:
+        numeric: is_numeric
