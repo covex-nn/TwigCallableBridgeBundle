@@ -1,0 +1,26 @@
+services:
+    covex.twig_callable_bridge.twig_extension:
+        class: Covex\TwigCallableBridgeBundle\Twig\Extension
+        tags:
+            - { name: twig.extension }
+
+    covex.twig_callable.bridge_function:
+        class: Covex\TwigCallableBridgeBundle\Action\Action
+        arguments:
+            - 'function'
+        public: false
+        abstract: true
+
+    covex.twig_callable.bridge_filter:
+        class: Covex\TwigCallableBridgeBundle\Action\Action
+        arguments:
+            - 'filter'
+        public: false
+        abstract: true
+
+    covex.twig_callable.bridge_test:
+        class: Covex\TwigCallableBridgeBundle\Action\Action
+        arguments:
+            - 'test'
+        public: false
+        abstract: true

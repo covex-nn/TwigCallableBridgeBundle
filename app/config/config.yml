@@ -30,6 +30,6 @@ twig:
     globals:
         readme_md: %kernel.root_dir%/../README.md
 
-covex_twig_callback_bridge:
+covex_twig_callable_bridge:
     functions:
         file_get_contents: file_get_contents

@@ -6,19 +6,19 @@
  * @author Andrey F. Mindubaev <covex.mobile@gmail.com>
  * @license http://opensource.org/licenses/MIT  MIT License
  */
-namespace Covex\TwigCallbackBridgeBundle\DependencyInjection;
+namespace Covex\TwigCallableBridgeBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\DefinitionDecorator;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
-use Covex\TwigCallbackBridgeBundle\Callback\CallbackInterface;
+use Covex\TwigCallableBridgeBundle\Action\ActionInterface;
 
 /**
  * This is the class that loads and manages bundle configuration
  */
-class CovexTwigCallbackBridgeExtension extends Extension
+class CovexTwigCallableBridgeExtension extends Extension
 {
   /**
    * {@inheritDoc}
@@ -28,14 +28,14 @@ class CovexTwigCallbackBridgeExtension extends Extension
     $configuration = new Configuration();
     $config = $this->processConfiguration($configuration, $configs);
 
-    foreach ($config["functions"] as $name => $callback) {
-      $this->addCallback($name, CallbackInterface::CALLBACK_FUNCTION, $callback, $container);
+    foreach ($config["functions"] as $name => $action) {
+      $this->defineAction($name, ActionInterface::ACTION_FUNCTION, $action, $container);
     }
-    foreach ($config["filters"] as $name => $callback) {
-      $this->addCallback($name, CallbackInterface::CALLBACK_FILTER, $callback, $container);
+    foreach ($config["filters"] as $name => $action) {
+      $this->defineAction($name, ActionInterface::ACTION_FILTER, $action, $container);
     }
-    foreach ($config["tests"] as $name => $callback) {
-      $this->addCallback($name, CallbackInterface::CALLBACK_TEST, $callback, $container);
+    foreach ($config["tests"] as $name => $action) {
+      $this->defineAction($name, ActionInterface::ACTION_TEST, $action, $container);
     }
 
     $loader = new Loader\YamlFileLoader(
@@ -45,26 +45,26 @@ class CovexTwigCallbackBridgeExtension extends Extension
   }
 
   /**
-   * Add callback
+   * Add callable
    *
    * @param string           $name      Name
    * @param string           $type      Type
-   * @param callback         $callback  Callback
+   * @param callback         $action    Callable action
    * @param ContainerBuilder $container Container builder
    *
    * @return null
    */
-  protected function addCallback($name, $type, $callback, ContainerBuilder $container)
+  protected function defineAction($name, $type, $action, ContainerBuilder $container)
   {
-    $callbackDefinition = new DefinitionDecorator("covex.twig_callback.bridge_" . $type);
+    $definition = new DefinitionDecorator("covex.twig_callable.bridge_" . $type);
 
-    $callbackDefinition->addMethodCall('setName', array($name));
-    $callbackDefinition->addMethodCall('setValue', array($callback));
-    $callbackDefinition->addTag("twig.callback_bridge");
+    $definition->addMethodCall('setName', array($name));
+    $definition->addMethodCall('setValue', array($action));
+    $definition->addTag("twig.callable_bridge");
 
     $container->setDefinition(
-      "covex.twig_callback.bridge_" . $type . "." . md5(serialize($callback)),
-      $callbackDefinition
+      "covex.twig_callable.bridge_" . $type . "." . md5(serialize($action)),
+      $definition
     );
   }
 }

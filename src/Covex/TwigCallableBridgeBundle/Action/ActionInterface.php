@@ -1,41 +1,41 @@
 <?php
 
 /**
- * Twig callback interface
+ * Callable action interface
  *
  * @author Andrey F. Mindubaev <covex.mobile@gmail.com>
  * @license http://opensource.org/licenses/MIT  MIT License
  */
-namespace Covex\TwigCallbackBridgeBundle\Callback;
+namespace Covex\TwigCallableBridgeBundle\Action;
 
 /**
- * Twig callback interface
+ * Callable action interface
  */
-interface CallbackInterface
+interface ActionInterface
 {
 
-  const CALLBACK_FUNCTION = "function";
+  const ACTION_FUNCTION = "function";
 
-  const CALLBACK_FILTER = "filter";
+  const ACTION_FILTER = "filter";
 
-  const CALLBACK_TEST = "test";
+  const ACTION_TEST = "test";
 
   /**
-   * Get type callback type
+   * Get action type
    *
    * @return mixed
    */
   public function getType();
 
   /**
-   * Get callback name
+   * Get action name
    *
    * @return string
    */
   public function getName();
 
   /**
-   * Get callback value
+   * Get action itself
    *
    * @return callback
    */

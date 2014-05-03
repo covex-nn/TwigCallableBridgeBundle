@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Twig callback bridge extension
+ * Twig callable bridge extension
  *
  * @author Andrey F. Mindubaev <covex.mobile@gmail.com>
  * @license http://opensource.org/licenses/MIT  MIT License
  */
-namespace Covex\TwigCallbackBridgeBundle\Twig;
+namespace Covex\TwigCallableBridgeBundle\Twig;
 
-use Covex\TwigCallbackBridgeBundle\Callback\CallbackInterface;
+use Covex\TwigCallableBridgeBundle\Action\ActionInterface;
 
 /**
- * Twig callback bridge extension
+ * Twig callable bridge extension
  */
 class Extension extends \Twig_Extension
 {
@@ -32,27 +32,27 @@ class Extension extends \Twig_Extension
   private $tests = array();
 
   /**
-   * Add callback
+   * Add callable
    *
-   * @param CallbackInterface $callback Callback
+   * @param ActionInterface $action Calleble action
    *
    * @return null
    * @throws \Twig_Error
    */
-  public function addCallback(CallbackInterface $callback)
+  public function addAction(ActionInterface $action)
   {
-    $name = $callback->getName();
-    $value = $callback->getValue();
-    $type = $callback->getType();
+    $name = $action->getName();
+    $value = $action->getValue();
+    $type = $action->getType();
 
     switch ($type) {
-      case CallbackInterface::CALLBACK_FUNCTION:
+      case ActionInterface::ACTION_FUNCTION:
         $this->functions[] = new \Twig_SimpleFunction($name, $value);
         break;
-      case CallbackInterface::CALLBACK_FILTER:
+      case ActionInterface::ACTION_FILTER:
         $this->filters[] = new \Twig_SimpleFilter($name, $value);
         break;
-      case CallbackInterface::CALLBACK_TEST:
+      case ActionInterface::ACTION_TEST:
         $this->tests[] = new \Twig_SimpleTest($name, $value);
         break;
       default:
@@ -89,6 +89,6 @@ class Extension extends \Twig_Extension
    */
   public function getName()
   {
-    return "covex_twig_callback_bridge";
+    return "covex_twig_callable_bridge";
   }
 }

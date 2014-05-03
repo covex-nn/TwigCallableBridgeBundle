@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Twig callback class
+ * Twig callable action class
  *
  * @author Andrey F. Mindubaev <covex.mobile@gmail.com>
  * @license http://opensource.org/licenses/MIT  MIT License
  */
-namespace Covex\TwigCallbackBridgeBundle\Callback;
+namespace Covex\TwigCallableBridgeBundle\Action;
 
 /**
- * Twig callback class
+ * Twig callable action class
  */
-class Callback implements CallbackInterface
+class Action implements ActionInterface
 {
 
   /**
@@ -32,8 +32,8 @@ class Callback implements CallbackInterface
   /**
    * Public constructor
    *
-   * @param string   $type  Callback type
-   * @param callback $value Callback itself
+   * @param string   $type  Type
+   * @param callback $value Action itself
    */
   public function __construct($type, $value = null)
   {
@@ -72,9 +72,9 @@ class Callback implements CallbackInterface
   }
 
   /**
-   * Set callback value
+   * Set action value
    *
-   * @param callback $value Callback
+   * @param callback $value Callable action
    *
    * @return null
    */

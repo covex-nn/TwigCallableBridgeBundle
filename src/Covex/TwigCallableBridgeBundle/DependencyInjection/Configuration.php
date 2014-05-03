@@ -6,7 +6,7 @@
  * @author Andrey F. Mindubaev <covex.mobile@gmail.com>
  * @license http://opensource.org/licenses/MIT  MIT License
  */
-namespace Covex\TwigCallbackBridgeBundle\DependencyInjection;
+namespace Covex\TwigCallableBridgeBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -23,7 +23,7 @@ class Configuration implements ConfigurationInterface
   public function getConfigTreeBuilder()
   {
     $treeBuilder = new TreeBuilder();
-    $rootNode = $treeBuilder->root('covex_twig_callback_bridge');
+    $rootNode = $treeBuilder->root('covex_twig_callable_bridge');
 
     $callableValidator = function ($value) {
       return !is_callable($value);

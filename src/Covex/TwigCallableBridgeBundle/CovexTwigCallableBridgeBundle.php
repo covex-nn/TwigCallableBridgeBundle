@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Twig Callback Bridge Bundle
+ * Twig Callable Bridge Bundle
  *
  * @author Andrey F. Mindubaev <covex.mobile@gmail.com>
  * @license http://opensource.org/licenses/MIT  MIT License
  */
-namespace Covex\TwigCallbackBridgeBundle;
+namespace Covex\TwigCallableBridgeBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Twig Callback Bridge Bundle
+ * Twig Callable Bridge Bundle
  */
-class CovexTwigCallbackBridgeBundle extends Bundle
+class CovexTwigCallableBridgeBundle extends Bundle
 {
 
 
@@ -24,7 +24,7 @@ class CovexTwigCallbackBridgeBundle extends Bundle
   public function build(ContainerBuilder $container)
   {
     $container->addCompilerPass(
-      new DependencyInjection\Compiler\CallbackPass()
+      new DependencyInjection\Compiler\ActionPass()
     );
   }
 }
