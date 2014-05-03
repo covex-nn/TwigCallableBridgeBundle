@@ -1,0 +1,10 @@
+--TEST--
+"simpleFunction" function
+--TEMPLATE--
+{{ simpleFunction('qqq') }}
+{{ simpleFunction(param) }}
+--DATA--
+return array('param' => 'www')
+--EXPECT--
+(qqq)
+(www)

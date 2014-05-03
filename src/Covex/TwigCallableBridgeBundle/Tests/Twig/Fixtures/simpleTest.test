@@ -1,0 +1,12 @@
+--TEST--
+"simpleTest" test
+--TEMPLATE--
+* {% if 'qqq' is simpleTest %}yes{% else %}no{% endif %} *
+* {% if param1 is simpleTest %}yes{% else %}no{% endif %} *
+* {% if param2 is simpleTest %}yes{% else %}no{% endif %} *
+--DATA--
+return array('param1' => '(www)', 'param2' => '[www]')
+--EXPECT--
+* no *
+* yes *
+* yes *

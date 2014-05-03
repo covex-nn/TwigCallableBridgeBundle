@@ -1,0 +1,10 @@
+--TEST--
+"simpleFilter" filter
+--TEMPLATE--
+{{ 'qqq'|simpleFilter }}
+{{ param|simpleFilter }}
+--DATA--
+return array('param' => 'www')
+--EXPECT--
+[qqq]
+[www]
