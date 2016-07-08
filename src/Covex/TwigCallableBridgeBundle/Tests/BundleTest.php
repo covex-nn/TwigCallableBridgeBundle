@@ -8,7 +8,7 @@
  */
 namespace Covex\TwigCallableBridgeBundle\Tests;
 
-use Apnet\FunctionalTestBundle\Framework\WebTestCase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase ;
 
 /**
  * Functional test

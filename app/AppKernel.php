@@ -7,12 +7,13 @@
  * @license http://opensource.org/licenses/MIT  MIT License
  */
 use Symfony\Component\Config\Loader\LoaderInterface;
+use Symfony\Component\HttpKernel\Kernel;
 
 /**
  * Bundle test kernel
  */
 // @codingStandardsIgnoreStart
-class AppKernel extends Apnet\FunctionalTestBundle\HttpKernel\AppKernel
+class AppKernel extends Kernel
 // @codingStandardsIgnoreEnd
 {
 
@@ -27,8 +28,6 @@ class AppKernel extends Apnet\FunctionalTestBundle\HttpKernel\AppKernel
       new Symfony\Bundle\MonologBundle\MonologBundle(),
 
       new Covex\TwigCallableBridgeBundle\CovexTwigCallableBridgeBundle(),
-
-      new Apnet\FunctionalTestBundle\ApnetFunctionalTestBundle(),
       new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
     );
   }
